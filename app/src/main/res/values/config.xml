@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dock_apps">
+        <item>com.netflix.ninja</item>
+        <item>com.google.android.youtube.tv</item>
+        <item>com.disney.disneyplus</item>
+        <item>com.amazon.amazonvideo.livingroom</item>
+        <item>com.hbo.hbonow</item>
+        <item>tv.pluto.android</item>
+    </string-array>
+    <integer name="columns">6</integer>
+    <bool name="is_dark_theme">true</bool>
+</resources>

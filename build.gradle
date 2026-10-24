@@ -1,0 +1,7 @@
+buildscript {
+    ext {
+        gradle_version = '8.1.0'
+    }
+    repositories { google() mavenCentral() }
+    dependencies { classpath "com.android.tools.build:gradle:" }
+}

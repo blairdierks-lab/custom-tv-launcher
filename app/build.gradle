@@ -1,0 +1,4 @@
+plugins { id 'com.android.application' }
+android { namespace 'com.cleanyourtv'; compileSdk 34; defaultConfig { applicationId 'com.cleanyourtv'; minSdk 26; targetSdk 34; versionCode 1; versionName '1.0' }
+buildTypes { release { minifyEnabled true; proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro' } } }
+dependencies { implementation 'androidx.leanback:leanback:1.0.0'; implementation 'androidx.appcompat:appcompat:1.6.1' }
