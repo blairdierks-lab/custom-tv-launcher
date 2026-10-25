@@ -2,7 +2,6 @@ package com.cleanyourtv;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,18 +9,16 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.SurfaceView;
-import android.view.ViewGroup;
-import android.view.Window;
+import android.view.View; // ADDED
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar; // ADDED
 import java.util.List;
 import java.util.Locale;
 
@@ -139,10 +136,7 @@ class AppleTVUI extends SurfaceView implements View.OnClickListener, View.OnFocu
     }
     
     private void loadApps(Context context) {
-        // Load app list from config.xml
         try {
-            // This is where you'd load from resources/config.xml
-            // For now, we'll hardcode the 6 apps
             apps.add(new AppItem("Netflix", "com.netflix.ninja", "#E50914"));
             apps.add(new AppItem("YouTube", "com.google.android.youtube.tv", "#FF0000"));
             apps.add(new AppItem("Disney+", "com.disney.disneyplus", "#0063E5"));
@@ -243,7 +237,7 @@ class AppleTVUI extends SurfaceView implements View.OnClickListener, View.OnFocu
     
     private void drawGridContent(Canvas canvas) {
         // Draw grid background
-        int gridTop = (int)gridY - (tileSize / 2);
+        int gridTop = (int) (gridY - (tileSize / 2)); // FIXED CASTING
         int gridBottom = (int)dockY;
         canvas.drawRect(gridSpacing, gridTop, screenWidth - gridSpacing, gridBottom, topBarPaint);
         
@@ -279,7 +273,7 @@ class AppleTVUI extends SurfaceView implements View.OnClickListener, View.OnFocu
     }
     
     private String getTimeOfDay() {
-        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY); // FIXED
         if (hour < 12) return "morning";
         else if (hour < 18) return "afternoon";
         else return "evening";
@@ -287,14 +281,14 @@ class AppleTVUI extends SurfaceView implements View.OnClickListener, View.OnFocu
     
     private String getCurrentTime() {
         return String.format(Locale.getDefault(), "%02d:%02d", 
-                            Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
-                            Calendar.getInstance().get(Calendar.MINUTE));
+                            Calendar.getInstance().get(Calendar.HOUR_OF_DAY), // FIXED
+                            Calendar.getInstance().get(Calendar.MINUTE)); // FIXED
     }
     
     private String getCurrentDate() {
-        return Calendar.getInstance().getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault()) + ", " +
-               Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + " " +
-               Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+        return Calendar.getInstance().getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault()) + ", " + // FIXED
+               Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + " " + // FIXED
+               Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()); // FIXED
     }
     
     public void updateClock() {
